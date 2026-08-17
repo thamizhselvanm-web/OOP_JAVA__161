@@ -14,6 +14,7 @@ Professional Java laboratory programs for Object-Oriented Programming.
 | 6 | Immutable Nature of Wrapper Classes | `WrapperImmutableDemo.java` |
 | 7 | Multi-Thread Program | `ArrayThreadDemo.java` |
 | 8 | Inter-Thread Communication | `RailwayBooking.java` |
+| 9 | String Operations using ArrayList | `StringMenu.java` |
 
 ## Notes
 
@@ -66,6 +67,22 @@ For Experiment 8:
 javac RailwayBooking.java
 java RailwayBooking
 ```
+## Experiment 9 – String Operations Using ArrayList
 
+Experiment 9 demonstrates string manipulation using Java's `ArrayList<String>`.
+
+### Operations Implemented
+
+- Append a string
+- Insert a string at a specified index
+- Search for a string
+- Display strings beginning with a specified letter
+- Display all strings
+- Exit the program
+
+### File
+
+```text
+StringMenu.java
 ---
 Academic Laboratory Repository | Java | Object-Oriented Programming
