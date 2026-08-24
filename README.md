@@ -4,22 +4,21 @@ Java laboratory programs covering core Object-Oriented Programming concepts.
 
 ## Project Structure
 
-All exercises are grouped under `experiments/` and use zero-padded directory names so they remain in order.
+Each exercise remains in its original numbered directory.
 
 ```text
 OOP_JAVA__161/
 |-- README.md
-`-- experiments/
-	|-- 01-telephone-bill/
-	|-- 02-temperature-converter/
-	|-- 03-vehicle-inheritance/
-	|-- 04-abstract-library-member/
-	|-- 05-adt-queue-exception-handling/
-	|-- 06-wrapper-immutable-demo/
-	|-- 07-multithreading/
-	|-- 08-inter-thread-communication/
-	|-- 09-string-operations-arraylist/
-	`-- 10-file-handling-list-files/
+|-- Ex_1_Telephone_Bill/
+|-- Ex_2_Temperature_Converter/
+|-- Ex_3_Vehicle_Inheritance/
+|-- Ex_4_Abstract_Library_Member/
+|-- Ex_5_ADT_Queue_Exception_Handling/
+|-- Ex_6_Wrapper_Immutable_Demo/
+|-- Ex_7_Multithreading/
+|-- Ex_8_Inter_Thread_Communication/
+|-- Ex_9_String_Operations_ArrayList/
+`-- Ex_10_File_Handling_ListFiles/
 ```
 
 ## Experiments
@@ -42,7 +41,7 @@ OOP_JAVA__161/
 Open a terminal in the selected experiment directory, then compile and run its main class.
 
 ```bash
-cd experiments/01-telephone-bill
+cd Ex_1_Telephone_Bill
 javac TelephoneBill.java
 java TelephoneBill
 ```
@@ -50,7 +49,7 @@ java TelephoneBill
 Experiment 2 contains a package and should be compiled from its experiment directory:
 
 ```bash
-cd experiments/02-temperature-converter
+cd Ex_2_Temperature_Converter
 javac temperature/Converter.java TemperatureMain.java
 java TemperatureMain
 ```
@@ -58,14 +57,14 @@ java TemperatureMain
 The other experiments follow the same pattern. Replace the directory and class name as listed below:
 
 ```text
-03-vehicle-inheritance             VehicleDemo
-04-abstract-library-member         LibraryDemo
-05-adt-queue-exception-handling    Main
-06-wrapper-immutable-demo          WrapperImmutableDemo
-07-multithreading                   ArrayThreadDemo
-08-inter-thread-communication       RailwayBooking
-09-string-operations-arraylist      StringMenu
-10-file-handling-list-files         ListFiles
+Ex_3_Vehicle_Inheritance            VehicleDemo
+Ex_4_Abstract_Library_Member        LibraryDemo
+Ex_5_ADT_Queue_Exception_Handling   Main
+Ex_6_Wrapper_Immutable_Demo         WrapperImmutableDemo
+Ex_7_Multithreading                  ArrayThreadDemo
+Ex_8_Inter_Thread_Communication      RailwayBooking
+Ex_9_String_Operations_ArrayList     StringMenu
+Ex_10_File_Handling_ListFiles        File_Handling_ListFiles
 ```
 
 ## Notes
