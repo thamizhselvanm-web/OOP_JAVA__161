@@ -1,91 +1,81 @@
-# OOP JAVA LAB – Experiments 1–9
+# OOP Java Lab
 
-Professional Java laboratory programs for Object-Oriented Programming.
+Java laboratory programs covering core Object-Oriented Programming concepts.
+
+## Project Structure
+
+All exercises are grouped under `experiments/` and use zero-padded directory names so they remain in order.
+
+```text
+OOP_JAVA__161/
+|-- README.md
+`-- experiments/
+	|-- 01-telephone-bill/
+	|-- 02-temperature-converter/
+	|-- 03-vehicle-inheritance/
+	|-- 04-abstract-library-member/
+	|-- 05-adt-queue-exception-handling/
+	|-- 06-wrapper-immutable-demo/
+	|-- 07-multithreading/
+	|-- 08-inter-thread-communication/
+	|-- 09-string-operations-arraylist/
+	`-- 10-file-handling-list-files/
+```
 
 ## Experiments
 
-| No. | Experiment | File |
-|---|---|---|
-| 1 | Telephone Bill using Class and Object | `TelephoneBill.java` |
-| 2 | Package for Temperature Converter | `Converter.java`, `TemperatureMain.java` |
-| 3 | Inheritance Program for Vehicle Class | `VehicleDemo.java` |
-| 4 | Abstract Class – Library Member | `LibraryDemo.java` |
-| 5 | ADT Queue using Exception Handling | `Main.java` |
-| 6 | Immutable Nature of Wrapper Classes | `WrapperImmutableDemo.java` |
-| 7 | Multi-Thread Program | `ArrayThreadDemo.java` |
-| 8 | Inter-Thread Communication | `RailwayBooking.java` |
-| 9 | String Operations using ArrayList | `StringMenu.java` |
-
-## Notes
-
-- Each program contains a professional header and sample output in comments.
-- Experiment 2 uses a Java package and must be compiled with the package directory structure.
-- Experiments involving threads may produce output in a different order because of thread scheduling.
-- Experiment 7 generates random values, so its array output changes between executions.
-- Experiment 6 uses `System.identityHashCode()`, so hash-code values are runtime-dependent.
+| No. | Topic | Main file |
+| --- | --- | --- |
+| 1 | Classes and objects: telephone bill | `TelephoneBill.java` |
+| 2 | Packages: temperature converter | `TemperatureMain.java`, `temperature/Converter.java` |
+| 3 | Inheritance: vehicle hierarchy | `VehicleDemo.java` |
+| 4 | Abstract classes: library member | `LibraryDemo.java` |
+| 5 | ADT queue and exception handling | `Main.java` |
+| 6 | Wrapper classes and immutability | `WrapperImmutableDemo.java` |
+| 7 | Multithreading with arrays | `ArrayThreadDemo.java` |
+| 8 | Inter-thread communication | `RailwayBooking.java` |
+| 9 | String operations with `ArrayList` | `StringMenu.java` |
+| 10 | File handling and listing files | `ListFiles.java` |
 
 ## Compile and Run
 
-For normal programs:
+Open a terminal in the selected experiment directory, then compile and run its main class.
 
 ```bash
+cd experiments/01-telephone-bill
 javac TelephoneBill.java
 java TelephoneBill
 ```
 
-For Experiment 2:
+Experiment 2 contains a package and should be compiled from its experiment directory:
 
 ```bash
+cd experiments/02-temperature-converter
 javac temperature/Converter.java TemperatureMain.java
 java TemperatureMain
 ```
 
-For Experiment 5:
-
-```bash
-javac Main.java
-java Main
-```
-
-For Experiment 6:
-
-```bash
-javac WrapperImmutableDemo.java
-java WrapperImmutableDemo
-```
-
-For Experiment 7:
-
-```bash
-javac ArrayThreadDemo.java
-java ArrayThreadDemo
-```
-
-For Experiment 8:
-
-```bash
-javac RailwayBooking.java
-java RailwayBooking
-```
-## Experiment 9 – String Operations Using ArrayList
-
-Experiment 9 demonstrates string manipulation using Java's `ArrayList<String>`.
-
-### Operations Implemented
-
-- Append a string
-- Insert a string at a specified index
-- Search for a string
-- Display strings beginning with a specified letter
-- Display all strings
-- Exit the program
-
-### File
+The other experiments follow the same pattern. Replace the directory and class name as listed below:
 
 ```text
-StringMenu.java
----
+03-vehicle-inheritance             VehicleDemo
+04-abstract-library-member         LibraryDemo
+05-adt-queue-exception-handling    Main
+06-wrapper-immutable-demo          WrapperImmutableDemo
+07-multithreading                   ArrayThreadDemo
+08-inter-thread-communication       RailwayBooking
+09-string-operations-arraylist      StringMenu
+10-file-handling-list-files         ListFiles
+```
 
+## Notes
 
+- Threaded programs may print output in a different order because of scheduling.
+- Experiment 7 generates random values, so its array output changes each time.
+- Experiment 6 uses `System.identityHashCode()`, so hash-code values are runtime-dependent.
+- Experiment 2 must preserve the `temperature` package directory when compiling.
 
-Academic Laboratory Repository | Java | Object-Oriented Programming
+## Requirements
+
+- Java Development Kit (JDK) 8 or later
+- A terminal or Java-compatible IDE
