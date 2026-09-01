@@ -1,35 +1,43 @@
 /*
  * =====================================================================
- * EX.NO: 5
- * TITLE: ADT QUEUE USING EXCEPTION HANDLING
+ * EXERCISE 5: CIRCULAR QUEUE WITH EXCEPTION HANDLING
+ * =====================================================================
+ * OBJECTIVE: Understand Abstract Data Types (ADT) by implementing
+ *            a circular queue and handling overflow/underflow errors.
+ * CONCEPTS:  Queues, Interfaces, Exception Handling, BufferedReader
  * =====================================================================
  */
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
+// Interface: Defines contract for queue operations
 interface MyQueue {
-    void enqueue();
-    void dequeue();
-    void display();
+    void enqueue();   // Add element to queue
+    void dequeue();   // Remove element from queue
+    void display();   // Display all queue elements
 }
 
+// Concrete class: Implements circular queue using fixed-size array
 class CircularQueue implements MyQueue {
 
-    final int SIZE = 5;
-    int[] queue = new int[SIZE];
-    int front = -1;
-    int rear = -1;
+    // Queue properties
+    final int SIZE = 5;         // Maximum queue capacity
+    int[] queue = new int[SIZE];  // Array to store queue elements
+    int front = -1;             // Pointer to front element
+    int rear = -1;              // Pointer to rear element
 
+    // Method: Add element to queue (throws exception handling)
     public void enqueue() {
-
+        // Try-catch to handle input and queue overflow exceptions
         try {
             BufferedReader br =
                     new BufferedReader(new InputStreamReader(System.in));
 
+            // Check for queue overflow condition
             if ((front == 0 && rear == SIZE - 1)
                     || (front == rear + 1)) {
-                System.out.println("Queue Overflow");
+                System.out.println("Queue Overflow");  // All spaces filled
                 return;
             }
 
@@ -52,10 +60,11 @@ class CircularQueue implements MyQueue {
         }
     }
 
+    // Method: Remove and display front element from queue
     public void dequeue() {
-
+        // Check if queue is empty
         if (front == -1) {
-            System.out.println("Queue Underflow");
+            System.out.println("Queue Underflow");  // No elements to remove
             return;
         }
 
@@ -71,8 +80,9 @@ class CircularQueue implements MyQueue {
         }
     }
 
+    // Method: Display all elements currently in the queue
     public void display() {
-
+        // Check if queue is empty
         if (front == -1) {
             System.out.println("Queue is Empty");
             return;
@@ -98,15 +108,16 @@ class CircularQueue implements MyQueue {
     }
 }
 
+// Main class: Driver program for circular queue operations
 public class Main {
-
+    // Main method: Interactive menu for queue operations
     public static void main(String[] args) throws Exception {
-
+        // Input reader for user choices
         BufferedReader br =
                 new BufferedReader(new InputStreamReader(System.in));
 
-        CircularQueue q = new CircularQueue();
-        int ch;
+        CircularQueue q = new CircularQueue();  // Create queue object
+        int ch;  // User choice variable
 
         do {
             System.out.println("\n*** CIRCULAR QUEUE ***");
