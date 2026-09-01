@@ -1,17 +1,20 @@
 /*
  * =====================================================================
- * EX.NO: 2
- * TITLE: IMPLEMENTATION OF PACKAGE FOR TEMPERATURE CONVERTER
- * FILE : TemperatureMain.java
+ * EXERCISE 2: TEMPERATURE CONVERTER WITH PACKAGES
+ * =====================================================================
+ * OBJECTIVE: Understand Java packages by creating a temperature
+ *            conversion utility and demonstrating package imports.
+ * CONCEPTS:  Packages, Static Methods, Imports
  * =====================================================================
  */
 
-import temperature.Converter;
+import temperature.Converter;  // Import from temperature package
 
+// Main class: Demonstrates temperature conversion between different scales
 public class TemperatureMain {
 
     public static void main(String[] args) {
-
+        // Starting temperature value in Celsius
         double c = 25;
 
         System.out.println("Celsius to Fahrenheit: " +
