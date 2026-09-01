@@ -1,23 +1,28 @@
 /*
  * =====================================================================
- * EX.NO: 9
- * TITLE: STRING OPERATIONS USING ARRAYLIST
+ * EXERCISE 9: STRING OPERATIONS USING ARRAYLIST
+ * =====================================================================
+ * OBJECTIVE: Understand ArrayList and string operations by implementing
+ *            a menu-driven program for string manipulation.
+ * CONCEPTS:  ArrayList, String Methods, Collections, User Input
  * =====================================================================
  */
 
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.ArrayList;  // For dynamic list
+import java.util.Scanner;     // For user input
 
+// Interactive menu-driven application for ArrayList string manipulations
 public class StringMenu {
 
+    // Main execution loop: Displays options and dispatches user actions
     public static void main(String[] args) {
-
         Scanner sc = new Scanner(System.in);
-        ArrayList<String> list = new ArrayList<>();
+        ArrayList<String> list = new ArrayList<>();  // Dynamic array list to store strings
 
-        int choice;
+        int choice;  // User's menu choice
 
         do {
+            // Display menu options
             System.out.println("\n--- STRING OPERATIONS ---");
             System.out.println("1. Append");
             System.out.println("2. Insert");
@@ -28,16 +33,17 @@ public class StringMenu {
             System.out.print("Enter your choice: ");
 
             choice = sc.nextInt();
-            sc.nextLine();
+            sc.nextLine();  // Consume newline character
 
             switch (choice) {
-
+                // Case 1: Add string to end of list
                 case 1:
                     System.out.print("Enter string: ");
                     list.add(sc.nextLine());
                     System.out.println("String added successfully.");
                     break;
 
+                // Case 2: Insert string at specific position
                 case 2:
                     System.out.print("Enter index: ");
                     int index = sc.nextInt();
@@ -54,6 +60,7 @@ public class StringMenu {
                     }
                     break;
 
+                // Case 3: Search for a string in the list
                 case 3:
                     System.out.print("Enter string to search: ");
                     String search = sc.nextLine();
@@ -65,12 +72,14 @@ public class StringMenu {
                     }
                     break;
 
+                // Case 4: Display strings starting with specific letter
                 case 4:
                     System.out.print("Enter starting letter: ");
                     char ch = sc.nextLine().charAt(0);
 
                     System.out.println("Matching strings:");
 
+                    // Iterate through list and check first character
                     for (String s : list) {
                         if (!s.isEmpty()
                                 && Character.toLowerCase(s.charAt(0))
@@ -80,14 +89,17 @@ public class StringMenu {
                     }
                     break;
 
+                // Case 5: Display all strings in the list
                 case 5:
                     System.out.println("ArrayList: " + list);
                     break;
 
+                // Case 6: Exit program
                 case 6:
                     System.out.println("Program terminated.");
                     break;
 
+                // Default: Invalid choice
                 default:
                     System.out.println("Invalid choice.");
             }
