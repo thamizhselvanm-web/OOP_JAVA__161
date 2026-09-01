@@ -1,31 +1,40 @@
 /*
  * =====================================================================
- * EX.NO: 4
- * TITLE: CREATE AN ABSTRACT CLASS - LIBRARY MEMBER
+ * EXERCISE 4: ABSTRACT CLASSES AND POLYMORPHISM
+ * =====================================================================
+ * OBJECTIVE: Understand abstract classes by creating different member
+ *            types with unique borrowing limits and penalties.
+ * CONCEPTS:  Abstract Classes, Method Implementation, Inheritance
  * =====================================================================
  */
 
+// Abstract base class: Defines common attributes and contract for all library members
 abstract class LibraryMember {
+    // Shared member attributes across all categories
+    int memberId;      // Unique library identification number
+    String name;       // Full name of the member
+    String email;      // Contact email address
+    String phone;      // Phone contact number
 
-    int memberId;
-    String name, email, phone;
-
+    // Constructor: Initializes common member attributes
     LibraryMember(int id, String name, String email, String phone) {
-        memberId = id;
+        this.memberId = id;
         this.name = name;
         this.email = email;
         this.phone = phone;
     }
 
+    // Abstract method: Must be implemented by concrete derived classes to display member-specific privileges
     abstract void generateSummary();
 }
 
+// StudentMember class: Concrete implementation for student members
 class StudentMember extends LibraryMember {
-
     StudentMember(int id, String name, String email, String phone) {
         super(id, name, email, phone);
     }
 
+    // Override abstract method: Display student membership details
     void generateSummary() {
         System.out.println("Member Type       : Student");
         System.out.println("Member ID         : " + memberId);
@@ -38,12 +47,13 @@ class StudentMember extends LibraryMember {
     }
 }
 
+// FacultyMember class: Concrete implementation for faculty members
 class FacultyMember extends LibraryMember {
-
     FacultyMember(int id, String name, String email, String phone) {
         super(id, name, email, phone);
     }
 
+    // Override abstract method: Display faculty membership details
     void generateSummary() {
         System.out.println("Member Type       : Faculty");
         System.out.println("Member ID         : " + memberId);
@@ -56,12 +66,13 @@ class FacultyMember extends LibraryMember {
     }
 }
 
+// ExternalMember class: Concrete implementation for external members
 class ExternalMember extends LibraryMember {
-
     ExternalMember(int id, String name, String email, String phone) {
         super(id, name, email, phone);
     }
 
+    // Override abstract method: Display external membership details
     void generateSummary() {
         System.out.println("Member Type       : External");
         System.out.println("Member ID         : " + memberId);
@@ -74,10 +85,10 @@ class ExternalMember extends LibraryMember {
     }
 }
 
+// Main class: Demonstrates abstract class usage with different member types
 public class LibraryDemo {
-
     public static void main(String[] args) {
-
+        // Create different member objects
         StudentMember s = new StudentMember(
                 101, "Arun", "arun@mail.com", "9876543210"
         );
