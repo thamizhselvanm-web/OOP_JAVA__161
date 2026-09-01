@@ -1,37 +1,43 @@
 /*
  * =====================================================================
- * EX.NO: 10
- * TITLE: IMPLEMENTATION OF FILE HANDLING
+ * EXERCISE 10: FILE HANDLING AND DIRECTORY OPERATIONS
  * =====================================================================
- *
- * AIM:
- * To write a Java program to implement file handling and display
- * all files present in a specified directory.
+ * OBJECTIVE: Understand file handling by listing all files in a
+ *            directory without displaying subdirectories.
+ * CONCEPTS:  File Operations, Directory Listing, File Filtering
+ * =====================================================================
  */
 
-import java.io.File;
-import java.util.Scanner;
+import java.io.File;      // For file operations
+import java.util.Scanner;  // For user input
 
-public class ListFiles {
+// Main program: Prompts user for directory path and lists only files while excluding directories
+public class File_Handling_ListFiles {
 
+    // Entry point: Validates directory path and iterates over listFiles()
     public static void main(String[] args) {
-
+        // Create scanner for user input
         Scanner sc = new Scanner(System.in);
 
         System.out.print("Enter directory path: ");
         String path = sc.nextLine();
 
+        // Create File object for the given path
         File directory = new File(path);
 
+        // Check if path exists and is a directory
         if (directory.exists() && directory.isDirectory()) {
 
+            // Get all files and subdirectories in this directory
             File[] files = directory.listFiles();
 
             System.out.println("\nFiles in the directory:");
 
+            // Check if listFiles() returned results
             if (files != null) {
+                // Iterate through all items
                 for (File file : files) {
-
+                    // Display only files (not directories)
                     if (file.isFile()) {
                         System.out.println(file.getName());
                     }
@@ -42,7 +48,7 @@ public class ListFiles {
             System.out.println("Invalid directory path.");
         }
 
-        sc.close();
+        sc.close();  // Close scanner resource
     }
 }
 
