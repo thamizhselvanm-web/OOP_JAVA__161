@@ -1,72 +1,81 @@
 /*
  * =====================================================================
- * EX.NO: 8
- * TITLE: INTER-THREAD COMMUNICATION
+ * EXERCISE 8: INTER-THREAD COMMUNICATION
+ * =====================================================================
+ * OBJECTIVE: Demonstrate inter-thread communication using wait() and
+ *            notifyAll() for synchronized booking system.
+ * CONCEPTS:  Synchronized Methods, wait(), notifyAll(), Thread Communication
  * =====================================================================
  */
 
+// Shared resource class managing seat count with synchronized monitor methods
 class Railway {
 
-    int seats = 2;
+    int seats = 2;  // Available seat capacity shared among concurrent threads
 
+    // Synchronized method acquiring object monitor lock before booking
     synchronized void bookTicket(String name) {
 
+        // Loop condition protects against spurious wakeups while waiting for seats
         while (seats == 0) {
-
             try {
                 System.out.println(name + " waiting for a seat.");
-                wait();
+                wait();  // Temporarily releases monitor lock and enters WAITING state
             } catch (InterruptedException e) {
                 System.out.println(e);
             }
         }
 
-        seats--;
+        seats--;  // Decrement available seats
 
         System.out.println(name + " booked a ticket.");
         System.out.println("Available seats: " + seats);
     }
 
+    // Synchronized method: Cancel a ticket and notify waiting threads
     synchronized void cancelTicket(String name) {
-
-        seats++;
+        seats++;  // Increase available seats
 
         System.out.println(name + " cancelled a ticket.");
         System.out.println("Available seats: " + seats);
 
-        notifyAll();
+        notifyAll();  // Wake up all waiting threads
     }
 }
 
+// Booking thread: Attempts to book a ticket
 class Booking extends Thread {
 
-    Railway railway;
-    String name;
+    Railway railway;  // Shared railway object
+    String name;      // Passenger name
 
     Booking(Railway railway, String name) {
         this.railway = railway;
         this.name = name;
     }
 
+    // Run method: Execute booking operation
     public void run() {
         railway.bookTicket(name);
     }
 }
 
+// Cancellation thread: Cancels a ticket after delay
 class Cancellation extends Thread {
 
-    Railway railway;
-    String name;
+    Railway railway;  // Shared railway object
+    String name;      // Passenger name
 
     Cancellation(Railway railway, String name) {
         this.railway = railway;
         this.name = name;
     }
 
+    // Run method: Wait 1 second then cancel ticket
     public void run() {
 
         try {
-            Thread.sleep(1000);
+            Thread.sleep(1000);  // Delay 1000 ms (1 second)
         } catch (InterruptedException e) {
             System.out.println(e);
         }
@@ -75,12 +84,14 @@ class Cancellation extends Thread {
     }
 }
 
+// Main class: Demonstrates inter-thread communication
 public class RailwayBooking {
 
+    // Main method: Create threads for booking and cancellation
     public static void main(String[] args) {
+        Railway railway = new Railway();  // Shared resource
 
-        Railway railway = new Railway();
-
+        // Create booking threads for 3 passengers
         Booking b1 = new Booking(railway, "Passenger 1");
         Booking b2 = new Booking(railway, "Passenger 2");
         Booking b3 = new Booking(railway, "Passenger 3");
