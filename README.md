@@ -237,14 +237,16 @@ OOP_JAVA__161/
          course VARCHAR(100) NOT NULL
      );
      ```
-  2. **Compile Application**:
-     ```bash
+  2. **Compile & Run (via PowerShell Script)**:
+     ```powershell
+     cd Ex_11_JavaFX_JDBC_CRUD
+     .\run.ps1 Thamizh1.
+     ```
+  3. **Or Compile & Run Manually**:
+     ```powershell
      cd Ex_11_JavaFX_JDBC_CRUD
      javac --module-path lib --add-modules javafx.controls,javafx.fxml -cp "lib/*" StudentManagementApp.java
-     ```
-  3. **Run Application**:
-     ```bash
-     java --module-path lib --add-modules javafx.controls,javafx.fxml -cp ".;lib/*" StudentManagementApp
+     java --module-path lib --add-modules javafx.controls,javafx.fxml -cp ".;lib/*" StudentManagementApp Thamizh1.
      ```
 
 ---
