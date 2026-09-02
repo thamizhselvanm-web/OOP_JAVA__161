@@ -36,9 +36,35 @@ public class DBConnection {
             pass = System.getenv("DB_PASS");
         }
         if (pass == null || pass.trim().isEmpty()) {
-            pass = System.getProperty("db.password", DEFAULT_PASS);
+            pass = System.getProperty("db.password");
         }
-        return pass;
+        if (pass == null || pass.trim().isEmpty()) {
+            pass = System.getProperty("password");
+        }
+        if (pass != null && !pass.trim().isEmpty()) {
+            return pass;
+        }
+
+        // Test candidate passwords if no explicit password flag was provided
+        String[] candidatePasswords = new String[]{
+            "Thamizh1.",
+            "1234",
+            "",
+            "root",
+            "admin",
+            "password",
+            "123456"
+        };
+
+        for (String candidate : candidatePasswords) {
+            String baseUrl = "jdbc:mysql://" + DEFAULT_HOST + ":" + DEFAULT_PORT + "/?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
+            try (Connection conn = DriverManager.getConnection(baseUrl, getDbUser(), candidate)) {
+                return candidate;
+            } catch (SQLException ignored) {
+            }
+        }
+
+        return DEFAULT_PASS;
     }
 
     public static String getDbUrl() {

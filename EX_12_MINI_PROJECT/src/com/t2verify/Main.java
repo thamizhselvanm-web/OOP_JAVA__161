@@ -14,6 +14,22 @@ public class Main extends Application {
     private static Stage primaryStage;
 
     @Override
+    public void init() {
+        if (getParameters() != null) {
+            if (getParameters().getNamed().containsKey("db.password")) {
+                System.setProperty("db.password", getParameters().getNamed().get("db.password"));
+            } else if (getParameters().getNamed().containsKey("password")) {
+                System.setProperty("db.password", getParameters().getNamed().get("password"));
+            } else if (!getParameters().getRaw().isEmpty()) {
+                String arg = getParameters().getRaw().get(0).trim();
+                if (!arg.startsWith("-")) {
+                    System.setProperty("db.password", arg);
+                }
+            }
+        }
+    }
+
+    @Override
     public void start(Stage stage) {
         primaryStage = stage;
         primaryStage.setTitle("T2Verify — Log In");
