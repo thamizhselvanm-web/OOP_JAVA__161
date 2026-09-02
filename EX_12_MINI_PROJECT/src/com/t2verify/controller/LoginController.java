@@ -1,8 +1,8 @@
-package com.docuverify.controller;
+package com.t2verify.controller;
 
-import com.docuverify.Main;
-import com.docuverify.service.AuthenticationService;
-import com.docuverify.util.AlertUtil;
+import com.t2verify.Main;
+import com.t2verify.service.AuthenticationService;
+import com.t2verify.util.AlertUtil;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -27,7 +27,7 @@ public class LoginController {
 
         try {
             authService.authenticate(username, password);
-            Main.switchScene("/fxml/dashboard.fxml", "DocuVerify — Dashboard");
+            Main.switchScene("/fxml/dashboard.fxml", "T2Verify — Dashboard");
         } catch (IllegalArgumentException e) {
             errorLabel.setText(e.getMessage());
             errorLabel.setVisible(true);
@@ -38,6 +38,6 @@ public class LoginController {
 
     @FXML
     public void handleGoToRegister(ActionEvent event) {
-        Main.switchScene("/fxml/register.fxml", "DocuVerify — Register Account");
+        Main.switchScene("/fxml/register.fxml", "T2Verify — Register Account");
     }
 }

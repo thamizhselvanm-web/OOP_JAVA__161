@@ -9,11 +9,11 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<StackPane stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.docuverify.controller.LoginController">
+<StackPane stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.t2verify.controller.LoginController">
     <VBox alignment="CENTER" fillWidth="false">
         <VBox styleClass="auth-card" prefWidth="420.0" spacing="15.0">
             <VBox alignment="CENTER" spacing="5.0">
-                <Label styleClass="brand-title" text="🛡️ DocuVerify" />
+                <Label styleClass="brand-title" text="🛡️ T2Verify" />
                 <Label styleClass="page-subtitle" text="Secure Digital Document Verification System" />
             </VBox>
 

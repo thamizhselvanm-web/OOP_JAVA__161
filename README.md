@@ -60,7 +60,7 @@ OOP_JAVA__161/
 | [**Ex 9**](#ex9) | [Interactive String Operations](#ex9) | Dynamic Collections (`ArrayList`), Filtering, Buffer Flushing | `StringMenu.java` |
 | [**Ex 10**](#ex10) | [Directory File Listing Utility](#ex10) | Java File API (`java.io.File`), `isDirectory()`, `isFile()` | `File_Handling_ListFiles.java` |
 | [**Ex 11**](#ex11) | [Student Management CRUD Application](#ex11) | JavaFX GUI, JDBC Database Connectivity, MySQL CRUD | `StudentManagementApp.java`, `database_setup.sql` |
-| [**Ex 12**](#ex12) | [DocuVerify Digital Document Verification System](#ex12) | JavaFX Modular MVC, SHA-256 Hashing, JDBC DAO Architecture | `Main.java`, `database_setup.sql` |
+| [**Ex 12**](#ex12) | [T2Verify Digital Document Verification System](#ex12) | JavaFX Modular MVC, SHA-256 Hashing, JDBC DAO Architecture | `Main.java`, `database_setup.sql` |
 
 ---
 
@@ -250,9 +250,9 @@ OOP_JAVA__161/
 ---
 
 <a id="ex12"></a>
-### Experiment 12 / Mini Project: DocuVerify — Secure Digital Document Verification System
+### Experiment 12 / Mini Project: T2Verify — Secure Digital Document Verification System
 - **Directory**: `EX_12_MINI_PROJECT/`
-- **Main Class**: `com.docuverify.Main`
+- **Main Class**: `com.t2verify.Main`
 - **Architecture**: Model-View-Controller (MVC) with Data Access Object (DAO) Layer.
 - **Key Features**:
   - **Authentication**: User Registration & Login with Password Hashing.
@@ -260,7 +260,7 @@ OOP_JAVA__161/
   - **Verification Engine**: Upload candidate file to compute cryptographic hash & cross-match with database records.
   - **Audit History**: Log and track verification events with match outcome timestamps.
 - **Components**:
-  - `src/com/docuverify/`: Controllers, DAOs, Models, Services, Utilities.
+  - `src/com/T2Verify/`: Controllers, DAOs, Models, Services, Utilities.
   - `resources/fxml/ & resources/css/`: JavaFX FXML layout views and modern CSS styling.
   - `database_setup.sql`: MySQL database schema (`users`, `documents`, `verifications`).
   - `pom.xml`: Maven build configuration.
@@ -299,5 +299,5 @@ OOP_JAVA__161/
 
 ## Verification & Build Quality
 
-All 12 experiments (including the DocuVerify JavaFX Mini Project) have been thoroughly verified, compiled, and tested for execution correctness across clean, isolated Java virtual machine environments.
+All 12 experiments (including the T2Verify JavaFX Mini Project) have been thoroughly verified, compiled, and tested for execution correctness across clean, isolated Java virtual machine environments.
 

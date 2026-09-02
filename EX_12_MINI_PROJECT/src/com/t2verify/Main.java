@@ -1,4 +1,4 @@
-package com.docuverify;
+package com.t2verify;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -16,10 +16,10 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) {
         primaryStage = stage;
-        primaryStage.setTitle("DocuVerify — Log In");
+        primaryStage.setTitle("T2Verify — Log In");
         primaryStage.setResizable(true);
 
-        switchScene("/fxml/login.fxml", "DocuVerify — Log In");
+        switchScene("/fxml/login.fxml", "T2Verify — Log In");
         primaryStage.show();
     }
 

@@ -1,6 +1,6 @@
-package com.docuverify.util;
+package com.t2verify.util;
 
-import com.docuverify.model.User;
+import com.t2verify.model.User;
 
 public class UserSession {
 

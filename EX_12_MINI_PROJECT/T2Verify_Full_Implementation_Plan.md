@@ -1,4 +1,4 @@
-# DocuVerify — Secure Digital Document Verification System
+# T2Verify — Secure Digital Document Verification System
 ## Full Implementation Plan, Requirements, Do's and Don'ts
 
 **Project Type:** Java Mini Project  
@@ -14,13 +14,13 @@
 
 ## 1.1 Project Name
 
-**DocuVerify — Secure Digital Document Verification System**
+**T2Verify — Secure Digital Document Verification System**
 
 ## 1.2 Problem Statement
 
 Digital documents such as certificates, mark sheets, invoices, and identity-related files can be copied or modified easily. In many situations, a person or organization needs a simple way to verify whether a submitted document is the same document that was originally registered.
 
-DocuVerify provides a document registration and verification mechanism using cryptographic hashing.
+T2Verify provides a document registration and verification mechanism using cryptographic hashing.
 
 When a document is registered:
 
@@ -327,14 +327,14 @@ Contains reusable helper methods.
 # 9. Project Folder Structure
 
 ```text
-DocuVerify/
+T2Verify/
 │
 ├── pom.xml
 │
 ├── src/
 │   ├── main/
 │   │   ├── java/
-│   │   │   └── com/docuverify/
+│   │   │   └── com/T2Verify/
 │   │   │       ├── Main.java
 │   │   │       │
 │   │   │       ├── model/
@@ -1033,7 +1033,7 @@ Use a JavaFX Task for long-running hash generation so the UI remains responsive.
 Use this flow during your project demonstration:
 
 ```text
-1. Open DocuVerify
+1. Open T2Verify
 
 2. Register or log in
 
@@ -1066,7 +1066,7 @@ This demonstrates the complete end-to-end workflow clearly.
 
 # 24. Final Project Definition
 
-## DocuVerify
+## T2Verify
 
 **A JavaFX-based secure digital document registration and verification application that uses SHA-256 hashing to identify exact document matches and maintain a verification audit history.**
 

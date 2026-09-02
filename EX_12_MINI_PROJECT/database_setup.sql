@@ -1,6 +1,6 @@
--- DocuVerify Database Setup Script
-CREATE DATABASE IF NOT EXISTS docuverify_db;
-USE docuverify_db;
+-- T2Verify Database Setup Script
+CREATE DATABASE IF NOT EXISTS T2Verify_db;
+USE T2Verify_db;
 
 -- 1. Users Table
 CREATE TABLE IF NOT EXISTS users (
@@ -54,5 +54,5 @@ CREATE TABLE IF NOT EXISTS verification_history (
 -- thamizhselvan / Thamizh1. -> afac270993b2323f9272b54e5b3d8074c5175259bfb7c9eba7ba8951f4bd9867
 -- thamizhselvan / user123 -> e606e38b0d8c19b24cf0ee3808183162ea7cd63ff7912dbb22b5e803286b4446
 INSERT IGNORE INTO users (user_id, full_name, email, username, password_hash, role) VALUES 
-(1, 'System Administrator', 'admin@docuverify.com', 'admin', '240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9', 'ADMIN'),
+(1, 'System Administrator', 'admin@T2Verify.com', 'admin', '240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9', 'ADMIN'),
 (2, 'Thamizhselvan', 'thamizhselvan@example.com', 'thamizhselvan', 'afac270993b2323f9272b54e5b3d8074c5175259bfb7c9eba7ba8951f4bd9867', 'USER');

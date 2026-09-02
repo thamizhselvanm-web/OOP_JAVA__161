@@ -1,10 +1,10 @@
-package com.docuverify.service;
+package com.t2verify.service;
 
-import com.docuverify.dao.UserDAO;
-import com.docuverify.model.User;
-import com.docuverify.util.HashUtil;
-import com.docuverify.util.UserSession;
-import com.docuverify.util.ValidationUtil;
+import com.t2verify.dao.UserDAO;
+import com.t2verify.model.User;
+import com.t2verify.util.HashUtil;
+import com.t2verify.util.UserSession;
+import com.t2verify.util.ValidationUtil;
 
 import java.sql.SQLException;
 

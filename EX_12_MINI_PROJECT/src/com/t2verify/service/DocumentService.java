@@ -1,10 +1,10 @@
-package com.docuverify.service;
+package com.t2verify.service;
 
-import com.docuverify.dao.DocumentDAO;
-import com.docuverify.model.Document;
-import com.docuverify.model.User;
-import com.docuverify.util.HashUtil;
-import com.docuverify.util.ValidationUtil;
+import com.t2verify.dao.DocumentDAO;
+import com.t2verify.model.Document;
+import com.t2verify.model.User;
+import com.t2verify.util.HashUtil;
+import com.t2verify.util.ValidationUtil;
 
 import java.io.File;
 import java.util.List;

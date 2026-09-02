@@ -1,4 +1,4 @@
-package com.docuverify.util;
+package com.t2verify.util;
 
 import java.io.File;
 import java.io.FileInputStream;

@@ -1,12 +1,12 @@
-package com.docuverify.controller;
+package com.t2verify.controller;
 
-import com.docuverify.Main;
-import com.docuverify.dao.DocumentDAO;
-import com.docuverify.dao.VerificationDAO;
-import com.docuverify.model.User;
-import com.docuverify.model.Verification;
-import com.docuverify.util.AlertUtil;
-import com.docuverify.util.UserSession;
+import com.t2verify.Main;
+import com.t2verify.dao.DocumentDAO;
+import com.t2verify.dao.VerificationDAO;
+import com.t2verify.model.User;
+import com.t2verify.model.Verification;
+import com.t2verify.util.AlertUtil;
+import com.t2verify.util.UserSession;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -98,13 +98,13 @@ public class DashboardController {
     }
 
     @FXML public void handleNavDashboard(ActionEvent event) { /* Already on dashboard */ }
-    @FXML public void handleNavUpload(ActionEvent event) { Main.switchScene("/fxml/upload.fxml", "DocuVerify — Register Document"); }
-    @FXML public void handleNavVerify(ActionEvent event) { Main.switchScene("/fxml/verify.fxml", "DocuVerify — Verify Document"); }
-    @FXML public void handleNavHistory(ActionEvent event) { Main.switchScene("/fxml/history.fxml", "DocuVerify — Verification History"); }
+    @FXML public void handleNavUpload(ActionEvent event) { Main.switchScene("/fxml/upload.fxml", "T2Verify — Register Document"); }
+    @FXML public void handleNavVerify(ActionEvent event) { Main.switchScene("/fxml/verify.fxml", "T2Verify — Verify Document"); }
+    @FXML public void handleNavHistory(ActionEvent event) { Main.switchScene("/fxml/history.fxml", "T2Verify — Verification History"); }
 
     @FXML
     public void handleLogout(ActionEvent event) {
         UserSession.clear();
-        Main.switchScene("/fxml/login.fxml", "DocuVerify — Log In");
+        Main.switchScene("/fxml/login.fxml", "T2Verify — Log In");
     }
 }

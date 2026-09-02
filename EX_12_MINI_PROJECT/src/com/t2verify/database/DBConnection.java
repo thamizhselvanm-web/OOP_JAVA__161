@@ -1,4 +1,4 @@
-package com.docuverify.database;
+package com.t2verify.database;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -9,7 +9,7 @@ public class DBConnection {
 
     private static final String DEFAULT_HOST = "localhost";
     private static final String DEFAULT_PORT = "3306";
-    private static final String DEFAULT_DB_NAME = "docuverify_db";
+    private static final String DEFAULT_DB_NAME = "T2Verify_db";
     private static final String DEFAULT_USER = "root";
     private static final String DEFAULT_PASS = "Thamizh1.";
 

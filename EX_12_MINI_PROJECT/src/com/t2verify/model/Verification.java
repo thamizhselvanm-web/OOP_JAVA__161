@@ -1,4 +1,4 @@
-package com.docuverify.model;
+package com.t2verify.model;
 
 import java.sql.Timestamp;
 

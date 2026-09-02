@@ -1,4 +1,4 @@
-package com.docuverify.util;
+package com.t2verify.util;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;

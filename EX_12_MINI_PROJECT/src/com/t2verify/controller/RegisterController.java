@@ -1,8 +1,8 @@
-package com.docuverify.controller;
+package com.t2verify.controller;
 
-import com.docuverify.Main;
-import com.docuverify.service.AuthenticationService;
-import com.docuverify.util.AlertUtil;
+import com.t2verify.Main;
+import com.t2verify.service.AuthenticationService;
+import com.t2verify.util.AlertUtil;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -36,7 +36,7 @@ public class RegisterController {
             boolean success = authService.registerUser(fullName, email, username, password, confirmPassword);
             if (success) {
                 AlertUtil.showInfo("Registration Successful", "Account registered successfully! You can now log in.");
-                Main.switchScene("/fxml/login.fxml", "DocuVerify — Log In");
+                Main.switchScene("/fxml/login.fxml", "T2Verify — Log In");
             } else {
                 errorLabel.setText("Failed to register account. Please try again.");
                 errorLabel.setVisible(true);
@@ -51,6 +51,6 @@ public class RegisterController {
 
     @FXML
     public void handleGoToLogin(ActionEvent event) {
-        Main.switchScene("/fxml/login.fxml", "DocuVerify — Log In");
+        Main.switchScene("/fxml/login.fxml", "T2Verify — Log In");
     }
 }

@@ -1,7 +1,7 @@
-package com.docuverify.dao;
+package com.t2verify.dao;
 
-import com.docuverify.database.DBConnection;
-import com.docuverify.model.Document;
+import com.t2verify.database.DBConnection;
+import com.t2verify.model.Document;
 
 import java.sql.*;
 import java.util.ArrayList;

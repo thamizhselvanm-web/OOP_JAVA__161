@@ -10,11 +10,11 @@
 <?import javafx.scene.layout.Priority?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="700.0" prefWidth="1050.0" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.docuverify.controller.DashboardController">
+<BorderPane prefHeight="700.0" prefWidth="1050.0" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.t2verify.controller.DashboardController">
     <!-- Left Navigation Sidebar -->
     <left>
         <VBox styleClass="sidebar">
-            <Label styleClass="brand-title" text="🛡️ DocuVerify" />
+            <Label styleClass="brand-title" text="🛡️ T2Verify" />
             
             <VBox spacing="6.0" VBox.vgrow="ALWAYS">
                 <Button fx:id="navDashboardBtn" onAction="#handleNavDashboard" styleClass="nav-button-active" text="📊  Dashboard" />
