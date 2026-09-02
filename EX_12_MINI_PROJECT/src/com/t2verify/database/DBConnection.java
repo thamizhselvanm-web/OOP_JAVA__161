@@ -11,7 +11,7 @@ public class DBConnection {
     private static final String DEFAULT_PORT = "3306";
     private static final String DEFAULT_DB_NAME = "T2Verify_db";
     private static final String DEFAULT_USER = "root";
-    private static final String DEFAULT_PASS = "Thamizh1.";
+    private static final String DEFAULT_PASS = "";
 
     static {
         try {

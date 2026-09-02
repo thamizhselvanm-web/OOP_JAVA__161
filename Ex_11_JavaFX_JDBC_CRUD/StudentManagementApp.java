@@ -98,20 +98,85 @@ public class StudentManagementApp extends Application {
         primaryStage.show();
     }
 
-    public void connectToDatabase() {
-        String[] candidatePasswords = new String[]{
-            System.getenv("DB_PASSWORD"),
-            System.getProperty("db.password"),
-            "Thamizh1.",
-            "Thamizh1",
-            "1234",
-            "",
-            "root",
-            "admin",
-            "password",
-            "123456"
-        };
+    private String resolveDbPassword() {
+        if (getParameters() != null) {
+            if (getParameters().getNamed().containsKey("db.password")) {
+                return getParameters().getNamed().get("db.password");
+            }
+            if (getParameters().getNamed().containsKey("password")) {
+                return getParameters().getNamed().get("password");
+            }
+            if (!getParameters().getRaw().isEmpty()) {
+                String arg = getParameters().getRaw().get(0).trim();
+                if (!arg.startsWith("-")) {
+                    return arg;
+                }
+            }
+        }
+        String sysProp = System.getProperty("db.password");
+        if (sysProp != null && !sysProp.trim().isEmpty()) {
+            return sysProp;
+        }
+        sysProp = System.getProperty("password");
+        if (sysProp != null && !sysProp.trim().isEmpty()) {
+            return sysProp;
+        }
+        String envVar = System.getenv("DB_PASSWORD");
+        if (envVar != null && !envVar.trim().isEmpty()) {
+            return envVar;
+        }
+        envVar = System.getenv("MYSQL_PASSWORD");
+        if (envVar != null && !envVar.trim().isEmpty()) {
+            return envVar;
+        }
+        return "";
+    }
 
+    private String resolveDbUser() {
+        if (getParameters() != null && getParameters().getNamed().containsKey("db.user")) {
+            return getParameters().getNamed().get("db.user");
+        }
+        String prop = System.getProperty("db.user");
+        if (prop != null && !prop.trim().isEmpty()) return prop;
+        String env = System.getenv("DB_USER");
+        if (env != null && !env.trim().isEmpty()) return env;
+        return "root";
+    }
+
+    private String resolveDbHost() {
+        if (getParameters() != null && getParameters().getNamed().containsKey("db.host")) {
+            return getParameters().getNamed().get("db.host");
+        }
+        String prop = System.getProperty("db.host");
+        if (prop != null && !prop.trim().isEmpty()) return prop;
+        String env = System.getenv("DB_HOST");
+        if (env != null && !env.trim().isEmpty()) return env;
+        return "localhost";
+    }
+
+    private String resolveDbPort() {
+        if (getParameters() != null && getParameters().getNamed().containsKey("db.port")) {
+            return getParameters().getNamed().get("db.port");
+        }
+        String prop = System.getProperty("db.port");
+        if (prop != null && !prop.trim().isEmpty()) return prop;
+        String env = System.getenv("DB_PORT");
+        if (env != null && !env.trim().isEmpty()) return env;
+        return "3306";
+    }
+
+    private String resolveDbName() {
+        if (getParameters() != null && getParameters().getNamed().containsKey("db.name")) {
+            return getParameters().getNamed().get("db.name");
+        }
+        String prop = System.getProperty("db.name");
+        if (prop != null && !prop.trim().isEmpty()) return prop;
+        String env = System.getenv("DB_NAME");
+        if (env != null && !env.trim().isEmpty()) return env;
+        return "studentdb";
+    }
+
+    public void connectToDatabase() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (ClassNotFoundException e) {
@@ -119,34 +184,38 @@ public class StudentManagementApp extends Application {
             return;
         }
 
-        for (String pass : candidatePasswords) {
-            if (pass == null) continue;
-            try {
-                // Connect to MySQL server and ensure database and table exist
-                try (Connection initConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/?allowPublicKeyRetrieval=true&useSSL=false", "root", pass);
-                     Statement stmt = initConn.createStatement()) {
-                    stmt.executeUpdate("CREATE DATABASE IF NOT EXISTS studentdb");
-                    stmt.executeUpdate("CREATE TABLE IF NOT EXISTS studentdb.students (" +
-                            "id INT AUTO_INCREMENT PRIMARY KEY, " +
-                            "name VARCHAR(100) NOT NULL, " +
-                            "age INT NOT NULL, " +
-                            "course VARCHAR(100) NOT NULL)");
-                }
+        String user = resolveDbUser();
+        String pass = resolveDbPassword();
+        String host = resolveDbHost();
+        String port = resolveDbPort();
+        String dbName = resolveDbName();
 
-                // Connect to studentdb
-                connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/studentdb?allowPublicKeyRetrieval=true&useSSL=false", "root", pass);
-                displayArea.setText("Connected to database 'studentdb' successfully!");
-                return;
-            } catch (SQLException ignored) {
-                // Try next password fallback
+        String baseUrl = "jdbc:mysql://" + host + ":" + port + "/?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC";
+        String dbUrl = "jdbc:mysql://" + host + ":" + port + "/" + dbName + "?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC";
+
+        try {
+            // Ensure database and table exist automatically
+            try (Connection initConn = DriverManager.getConnection(baseUrl, user, pass);
+                 Statement stmt = initConn.createStatement()) {
+                stmt.executeUpdate("CREATE DATABASE IF NOT EXISTS " + dbName);
+                stmt.executeUpdate("CREATE TABLE IF NOT EXISTS " + dbName + ".students (" +
+                        "id INT AUTO_INCREMENT PRIMARY KEY, " +
+                        "name VARCHAR(100) NOT NULL, " +
+                        "age INT NOT NULL, " +
+                        "course VARCHAR(100) NOT NULL)");
             }
-        }
 
-        displayArea.setText("Database Connection Error:\n" +
-                "Could not connect to MySQL server at localhost:3306.\n" +
-                "1. Ensure MySQL Server is running.\n" +
-                "2. If your MySQL password is not default ('1234', '', 'root'), run with:\n" +
-                "   java -Ddb.password=YOUR_PASSWORD ...");
+            // Establish connection to studentdb
+            connection = DriverManager.getConnection(dbUrl, user, pass);
+            displayArea.setText("Connected to database '" + dbName + "' as user '" + user + "' successfully!");
+        } catch (SQLException e) {
+            displayArea.setText("Database Connection Error:\n" + e.getMessage() + "\n\n" +
+                    "Pass DB password when running via any of these options:\n" +
+                    "1. Positional Arg: java ... StudentManagementApp YOUR_PASSWORD\n" +
+                    "2. Named Arg:      java ... StudentManagementApp --db.password=YOUR_PASSWORD\n" +
+                    "3. System Property: java \"-Ddb.password=YOUR_PASSWORD\" ...\n" +
+                    "4. Env Variable:    $env:DB_PASSWORD=\"YOUR_PASSWORD\"");
+        }
     }
 
     private boolean isConnectionValid() {
