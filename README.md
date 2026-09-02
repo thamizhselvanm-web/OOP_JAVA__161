@@ -51,23 +51,24 @@ OOP_JAVA__161/
 
 | Exp No. | Topic | Core Concepts | Primary Class / Files |
 | :--- | :--- | :--- | :--- |
-| **Ex 1** | Telephone Bill Calculator | Classes, Objects, Constructors, Tiered Billing Logic | `TelephoneBill.java` |
-| **Ex 2** | Temperature Converter Utility | Java Packages, Static Utility Methods, Unit Conversion | `Converter.java`, `TemperatureMain.java` |
-| **Ex 3** | Vehicle Tax & Insurance Hierarchy | Inheritance (`extends`), Method Overriding, Subtyping | `VehicleDemo.java` |
-| **Ex 4** | Library Membership System | Abstract Classes, Polymorphism, Mandatory Method Contract | `LibraryDemo.java` |
-| **Ex 5** | Circular Queue ADT with Exception Handling | Interfaces (`implements`), Fixed Array Queue, `try-catch` | `Main.java` |
-| **Ex 6** | Wrapper Classes & Immutability | Object Identity, Unboxing/Reboxing, `identityHashCode` | `WrapperImmutableDemo.java` |
-| **Ex 7** | Multithreaded Array Processing | Thread Creation (`extends Thread`), `start()`, `join()` | `ArrayThreadDemo.java` |
-| **Ex 8** | Inter-Thread Railway Booking System | Synchronized Monitors, `wait()`, `notifyAll()`, Thread States | `RailwayBooking.java` |
-| **Ex 9** | Interactive String Operations | Dynamic Collections (`ArrayList`), Filtering, Buffer Flushing | `StringMenu.java` |
-| **Ex 10** | Directory File Listing Utility | Java File API (`java.io.File`), `isDirectory()`, `isFile()` | `File_Handling_ListFiles.java` |
-| **Ex 11** | Student Management CRUD Application | JavaFX GUI, JDBC Database Connectivity, MySQL CRUD | `StudentManagementApp.java`, `database_setup.sql` |
-| **Ex 12** | DocuVerify Digital Document Verification System | JavaFX Modular MVC, SHA-256 Hashing, JDBC DAO Architecture | `Main.java`, `database_setup.sql` |
+| [**Ex 1**](#ex1) | [Telephone Bill Calculator](#ex1) | Classes, Objects, Constructors, Tiered Billing Logic | `TelephoneBill.java` |
+| [**Ex 2**](#ex2) | [Temperature Converter Utility](#ex2) | Java Packages, Static Utility Methods, Unit Conversion | `Converter.java`, `TemperatureMain.java` |
+| [**Ex 3**](#ex3) | [Vehicle Tax & Insurance Hierarchy](#ex3) | Inheritance (`extends`), Method Overriding, Subtyping | `VehicleDemo.java` |
+| [**Ex 4**](#ex4) | [Library Membership System](#ex4) | Abstract Classes, Polymorphism, Mandatory Method Contract | `LibraryDemo.java` |
+| [**Ex 5**](#ex5) | [Circular Queue ADT with Exception Handling](#ex5) | Interfaces (`implements`), Fixed Array Queue, `try-catch` | `Main.java` |
+| [**Ex 6**](#ex6) | [Wrapper Classes & Immutability](#ex6) | Object Identity, Unboxing/Reboxing, `identityHashCode` | `WrapperImmutableDemo.java` |
+| [**Ex 7**](#ex7) | [Multithreaded Array Processing](#ex7) | Thread Creation (`extends Thread`), `start()`, `join()` | `ArrayThreadDemo.java` |
+| [**Ex 8**](#ex8) | [Inter-Thread Railway Booking System](#ex8) | Synchronized Monitors, `wait()`, `notifyAll()`, Thread States | `RailwayBooking.java` |
+| [**Ex 9**](#ex9) | [Interactive String Operations](#ex9) | Dynamic Collections (`ArrayList`), Filtering, Buffer Flushing | `StringMenu.java` |
+| [**Ex 10**](#ex10) | [Directory File Listing Utility](#ex10) | Java File API (`java.io.File`), `isDirectory()`, `isFile()` | `File_Handling_ListFiles.java` |
+| [**Ex 11**](#ex11) | [Student Management CRUD Application](#ex11) | JavaFX GUI, JDBC Database Connectivity, MySQL CRUD | `StudentManagementApp.java`, `database_setup.sql` |
+| [**Ex 12**](#ex12) | [DocuVerify Digital Document Verification System](#ex12) | JavaFX Modular MVC, SHA-256 Hashing, JDBC DAO Architecture | `Main.java`, `database_setup.sql` |
 
 ---
 
 ## Detailed Experiment Specifications
 
+<a id="ex1"></a>
 ### Experiment 1: Telephone Bill Calculator
 - **Directory**: `Ex_1_Telephone_Bill/`
 - **Main Class**: `TelephoneBill`
@@ -82,6 +83,7 @@ OOP_JAVA__161/
 
 ---
 
+<a id="ex2"></a>
 ### Experiment 2: Temperature Converter Utility with Packages
 - **Directory**: `Ex_2_Temperature_Converter/`
 - **Main Class**: `TemperatureMain`
@@ -97,6 +99,7 @@ OOP_JAVA__161/
 
 ---
 
+<a id="ex3"></a>
 ### Experiment 3: Vehicle Tax & Insurance Hierarchy
 - **Directory**: `Ex_3_Vehicle_Inheritance/`
 - **Main Class**: `VehicleDemo`
@@ -111,6 +114,7 @@ OOP_JAVA__161/
 
 ---
 
+<a id="ex4"></a>
 ### Experiment 4: Library Membership System
 - **Directory**: `Ex_4_Abstract_Library_Member/`
 - **Main Class**: `LibraryDemo`
@@ -125,6 +129,7 @@ OOP_JAVA__161/
 
 ---
 
+<a id="ex5"></a>
 ### Experiment 5: Circular Queue ADT with Exception Handling
 - **Directory**: `Ex_5_ADT_Queue_Exception_Handling/`
 - **Main Class**: `Main`
@@ -139,6 +144,7 @@ OOP_JAVA__161/
 
 ---
 
+<a id="ex6"></a>
 ### Experiment 6: Wrapper Classes & Immutability Demonstration
 - **Directory**: `Ex_6_Wrapper_Immutable_Demo/`
 - **Main Class**: `WrapperImmutableDemo`
@@ -153,6 +159,7 @@ OOP_JAVA__161/
 
 ---
 
+<a id="ex7"></a>
 ### Experiment 7: Multithreaded Array Processing
 - **Directory**: `Ex_7_Multithreading/`
 - **Main Class**: `ArrayThreadDemo`
@@ -167,6 +174,7 @@ OOP_JAVA__161/
 
 ---
 
+<a id="ex8"></a>
 ### Experiment 8: Inter-Thread Railway Booking System
 - **Directory**: `Ex_8_Inter_Thread_Communication/`
 - **Main Class**: `RailwayBooking`
@@ -181,6 +189,7 @@ OOP_JAVA__161/
 
 ---
 
+<a id="ex9"></a>
 ### Experiment 9: Interactive String Operations using ArrayList
 - **Directory**: `Ex_9_String_Operations_ArrayList/`
 - **Main Class**: `StringMenu`
@@ -195,6 +204,7 @@ OOP_JAVA__161/
 
 ---
 
+<a id="ex10"></a>
 ### Experiment 10: Directory File Listing Utility
 - **Directory**: `Ex_10_File_Handling_ListFiles/`
 - **Main Class**: `File_Handling_ListFiles`
@@ -209,6 +219,7 @@ OOP_JAVA__161/
 
 ---
 
+<a id="ex11"></a>
 ### Experiment 11: JavaFX JDBC Student Management CRUD Application
 - **Directory**: `Ex_11_JavaFX_JDBC_CRUD/`
 - **Main Class**: `StudentManagementApp`
@@ -240,14 +251,21 @@ OOP_JAVA__161/
 
 ---
 
+<a id="ex12"></a>
 ### Experiment 12 / Mini Project: DocuVerify — Secure Digital Document Verification System
 - **Directory**: `EX_12_MINI_PROJECT/`
 - **Main Class**: `com.docuverify.Main`
+- **Architecture**: Model-View-Controller (MVC) with Data Access Object (DAO) Layer.
+- **Key Features**:
+  - **Authentication**: User Registration & Login with Password Hashing.
+  - **Document Registration**: Upload documents, auto-calculate SHA-256 hash, and store record metadata.
+  - **Verification Engine**: Upload candidate file to compute cryptographic hash & cross-match with database records.
+  - **Audit History**: Log and track verification events with match outcome timestamps.
 - **Components**:
-  - `src/com/docuverify/`: Full MVC architecture (Controllers, DAOs, Models, Services, Utilities).
-  - `resources/fxml/ & resources/css/`: JavaFX FXML views and custom dark/light theme CSS styling.
+  - `src/com/docuverify/`: Controllers, DAOs, Models, Services, Utilities.
+  - `resources/fxml/ & resources/css/`: JavaFX FXML layout views and modern CSS styling.
   - `database_setup.sql`: MySQL database schema (`users`, `documents`, `verifications`).
-  - `pom.xml` & `compile_and_run.ps1`: Maven and PowerShell automated build & launcher scripts.
+  - `pom.xml` & `compile_and_run.ps1`: Automated build & execution scripts.
 - **Execution Procedure**:
   1. **Database Setup**: Execute `database_setup.sql` in MySQL Server.
   2. **Compile & Run**:
@@ -255,6 +273,20 @@ OOP_JAVA__161/
      cd EX_12_MINI_PROJECT
      .\compile_and_run.ps1
      ```
+
+#### Mini Project Application Screenshots & Visual Documentation
+
+> [!NOTE]
+> Place screenshot image files inside `EX_12_MINI_PROJECT/docs/screenshots/` (or update image path references below).
+
+| View / Feature | Application Screenshot Placeholder | Description |
+| :--- | :---: | :--- |
+| **User Login & Authentication** | ![Login Screen](EX_12_MINI_PROJECT/docs/screenshots/login.png) | Authentication screen supporting user sign-in & session creation. |
+| **User Registration** | ![Register Screen](EX_12_MINI_PROJECT/docs/screenshots/register.png) | New user sign-up form with input validation and password hashing. |
+| **Main Dashboard** | ![Dashboard Screen](EX_12_MINI_PROJECT/docs/screenshots/dashboard.png) | Central navigation hub displaying quick stats and menu actions. |
+| **Document Upload & Register** | ![Upload Screen](EX_12_MINI_PROJECT/docs/screenshots/upload.png) | File selection interface generating SHA-256 fingerprint upon upload. |
+| **Document Verification Engine** | ![Verify Screen](EX_12_MINI_PROJECT/docs/screenshots/verify.png) | Live cryptographic hash comparison against registered documents. |
+| **Verification Audit History** | ![History Screen](EX_12_MINI_PROJECT/docs/screenshots/history.png) | Comprehensive tabular view of past verification attempts & results. |
 
 ---
 
@@ -270,3 +302,4 @@ OOP_JAVA__161/
 ## Verification & Build Quality
 
 All 12 experiments (including the DocuVerify JavaFX Mini Project) have been thoroughly verified, compiled, and tested for execution correctness across clean, isolated Java virtual machine environments.
+
