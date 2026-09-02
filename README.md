@@ -39,8 +39,6 @@ OOP_JAVA__161/
 └── EX_12_MINI_PROJECT/
     ├── database_setup.sql
     ├── pom.xml
-    ├── compile_and_run.ps1
-    ├── run.bat
     ├── resources/
     └── src/
 ```
@@ -265,13 +263,13 @@ OOP_JAVA__161/
   - `src/com/docuverify/`: Controllers, DAOs, Models, Services, Utilities.
   - `resources/fxml/ & resources/css/`: JavaFX FXML layout views and modern CSS styling.
   - `database_setup.sql`: MySQL database schema (`users`, `documents`, `verifications`).
-  - `pom.xml` & `compile_and_run.ps1`: Automated build & execution scripts.
+  - `pom.xml`: Maven build configuration.
 - **Execution Procedure**:
   1. **Database Setup**: Execute `database_setup.sql` in MySQL Server.
-  2. **Compile & Run**:
-     ```powershell
+  2. **Compile & Run (via Maven)**:
+     ```bash
      cd EX_12_MINI_PROJECT
-     .\compile_and_run.ps1
+     mvn clean javafx:run
      ```
 
 #### Mini Project Application Screenshots & Visual Documentation
