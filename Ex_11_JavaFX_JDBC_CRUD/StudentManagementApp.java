@@ -102,6 +102,8 @@ public class StudentManagementApp extends Application {
         String[] candidatePasswords = new String[]{
             System.getenv("DB_PASSWORD"),
             System.getProperty("db.password"),
+            "Thamizh1.",
+            "Thamizh1",
             "1234",
             "",
             "root",
