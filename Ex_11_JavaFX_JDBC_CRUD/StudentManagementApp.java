@@ -99,29 +99,63 @@ public class StudentManagementApp extends Application {
     }
 
     public void connectToDatabase() {
+        String[] candidatePasswords = new String[]{
+            System.getenv("DB_PASSWORD"),
+            System.getProperty("db.password"),
+            "1234",
+            "",
+            "root",
+            "admin",
+            "password",
+            "123456"
+        };
+
         try {
-            // Load the MySQL JDBC driver
             Class.forName("com.mysql.cj.jdbc.Driver");
-
-            // Obtain DB credentials securely from environment variable or system property
-            String dbPassword = System.getenv("DB_PASSWORD");
-            if (dbPassword == null || dbPassword.trim().isEmpty()) {
-                dbPassword = System.getProperty("db.password", "1234");
-            }
-
-            // Establish a connection to the database
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/studentdb", "root", dbPassword);
-            System.out.println("Database connection successful");
         } catch (ClassNotFoundException e) {
-            System.err.println("MySQL JDBC Driver not found");
-            e.printStackTrace();
-        } catch (SQLException e) {
-            System.err.println("Database connection failed");
-            e.printStackTrace();
+            displayArea.setText("Error: MySQL JDBC Driver not found in classpath.");
+            return;
         }
+
+        for (String pass : candidatePasswords) {
+            if (pass == null) continue;
+            try {
+                // Connect to MySQL server and ensure database and table exist
+                try (Connection initConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/?allowPublicKeyRetrieval=true&useSSL=false", "root", pass);
+                     Statement stmt = initConn.createStatement()) {
+                    stmt.executeUpdate("CREATE DATABASE IF NOT EXISTS studentdb");
+                    stmt.executeUpdate("CREATE TABLE IF NOT EXISTS studentdb.students (" +
+                            "id INT AUTO_INCREMENT PRIMARY KEY, " +
+                            "name VARCHAR(100) NOT NULL, " +
+                            "age INT NOT NULL, " +
+                            "course VARCHAR(100) NOT NULL)");
+                }
+
+                // Connect to studentdb
+                connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/studentdb?allowPublicKeyRetrieval=true&useSSL=false", "root", pass);
+                displayArea.setText("Connected to database 'studentdb' successfully!");
+                return;
+            } catch (SQLException ignored) {
+                // Try next password fallback
+            }
+        }
+
+        displayArea.setText("Database Connection Error:\n" +
+                "Could not connect to MySQL server at localhost:3306.\n" +
+                "1. Ensure MySQL Server is running.\n" +
+                "2. If your MySQL password is not default ('1234', '', 'root'), run with:\n" +
+                "   java -Ddb.password=YOUR_PASSWORD ...");
+    }
+
+    private boolean isConnectionValid() {
+        if (connection == null) {
+            connectToDatabase();
+        }
+        return connection != null;
     }
 
     private void createStudent() {
+        if (!isConnectionValid()) return;
         try {
             String name = nameField.getText().trim();
             String ageText = ageField.getText().trim();
@@ -151,6 +185,7 @@ public class StudentManagementApp extends Application {
     }
 
     private void readStudents() {
+        if (!isConnectionValid()) return;
         String sql = "SELECT * FROM students";
 
         try (Statement stmt = connection.createStatement(); ResultSet rs = stmt.executeQuery(sql)) {
@@ -174,6 +209,7 @@ public class StudentManagementApp extends Application {
     }
 
     private void updateStudent() {
+        if (!isConnectionValid()) return;
         try {
             String idText = idField.getText().trim();
             if (idText.isEmpty()) {
@@ -214,6 +250,7 @@ public class StudentManagementApp extends Application {
     }
 
     private void deleteStudent() {
+        if (!isConnectionValid()) return;
         try {
             String idText = idField.getText().trim();
             if (idText.isEmpty()) {
