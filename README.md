@@ -32,10 +32,17 @@ OOP_JAVA__161/
 │   └── StringMenu.java
 ├── Ex_10_File_Handling_ListFiles/
 │   └── File_Handling_ListFiles.java
-└── Ex_11_JavaFX_JDBC_CRUD/
+├── Ex_11_JavaFX_JDBC_CRUD/
+│   ├── database_setup.sql
+│   ├── StudentManagementApp.java
+│   └── lib/
+└── EX_12_MINI_PROJECT/
     ├── database_setup.sql
-    ├── StudentManagementApp.java
-    └── lib/
+    ├── pom.xml
+    ├── compile_and_run.ps1
+    ├── run.bat
+    ├── resources/
+    └── src/
 ```
 
 ---
@@ -55,6 +62,7 @@ OOP_JAVA__161/
 | **Ex 9** | Interactive String Operations | Dynamic Collections (`ArrayList`), Filtering, Buffer Flushing | `StringMenu.java` |
 | **Ex 10** | Directory File Listing Utility | Java File API (`java.io.File`), `isDirectory()`, `isFile()` | `File_Handling_ListFiles.java` |
 | **Ex 11** | Student Management CRUD Application | JavaFX GUI, JDBC Database Connectivity, MySQL CRUD | `StudentManagementApp.java`, `database_setup.sql` |
+| **Ex 12** | DocuVerify Digital Document Verification System | JavaFX Modular MVC, SHA-256 Hashing, JDBC DAO Architecture | `Main.java`, `database_setup.sql` |
 
 ---
 
@@ -232,15 +240,33 @@ OOP_JAVA__161/
 
 ---
 
+### Experiment 12 / Mini Project: DocuVerify — Secure Digital Document Verification System
+- **Directory**: `EX_12_MINI_PROJECT/`
+- **Main Class**: `com.docuverify.Main`
+- **Components**:
+  - `src/com/docuverify/`: Full MVC architecture (Controllers, DAOs, Models, Services, Utilities).
+  - `resources/fxml/ & resources/css/`: JavaFX FXML views and custom dark/light theme CSS styling.
+  - `database_setup.sql`: MySQL database schema (`users`, `documents`, `verifications`).
+  - `pom.xml` & `compile_and_run.ps1`: Maven and PowerShell automated build & launcher scripts.
+- **Execution Procedure**:
+  1. **Database Setup**: Execute `database_setup.sql` in MySQL Server.
+  2. **Compile & Run**:
+     ```powershell
+     cd EX_12_MINI_PROJECT
+     .\compile_and_run.ps1
+     ```
+
+---
+
 ## System Requirements
 
 - **JDK Version**: Java Development Kit (JDK 17 or JDK 21 recommended).
 - **Environment**: PowerShell, Bash, or Command Prompt.
-- **Database (Ex 11)**: MySQL Server 8.0+ & MySQL Connector/J JDBC Driver.
-- **GUI Framework (Ex 11)**: OpenJFX / JavaFX SDK 17+.
+- **Database (Ex 11 & 12)**: MySQL Server 8.0+ & MySQL Connector/J JDBC Driver.
+- **GUI Framework (Ex 11 & 12)**: OpenJFX / JavaFX SDK 17+.
 
 ---
 
 ## Verification & Build Quality
 
-All 11 experiments have been thoroughly verified, compiled, and tested for execution correctness across clean, isolated Java virtual machine environments.
+All 12 experiments (including the DocuVerify JavaFX Mini Project) have been thoroughly verified, compiled, and tested for execution correctness across clean, isolated Java virtual machine environments.

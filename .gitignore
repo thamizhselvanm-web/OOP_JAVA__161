@@ -1,5 +1,8 @@
-# Compiled Java class files
+# Compiled Java class files and build directories
 *.class
+bin/
+target/
+build/
 
 # Package Files
 *.jar
@@ -14,3 +17,4 @@ hs_err_pid*
 .idea/
 *.iml
 .vscode/
+

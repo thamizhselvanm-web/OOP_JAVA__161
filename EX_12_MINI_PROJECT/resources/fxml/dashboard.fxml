@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Priority?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane prefHeight="700.0" prefWidth="1050.0" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.docuverify.controller.DashboardController">
+    <!-- Left Navigation Sidebar -->
+    <left>
+        <VBox styleClass="sidebar">
+            <Label styleClass="brand-title" text="🛡️ DocuVerify" />
+            
+            <VBox spacing="6.0" VBox.vgrow="ALWAYS">
+                <Button fx:id="navDashboardBtn" onAction="#handleNavDashboard" styleClass="nav-button-active" text="📊  Dashboard" />
+                <Button fx:id="navUploadBtn" onAction="#handleNavUpload" styleClass="nav-button" text="📄  Register Document" />
+                <Button fx:id="navVerifyBtn" onAction="#handleNavVerify" styleClass="nav-button" text="🔍  Verify Document" />
+                <Button fx:id="navHistoryBtn" onAction="#handleNavHistory" styleClass="nav-button" text="📜  Verification History" />
+            </VBox>
+
+            <VBox spacing="10.0">
+                <VBox style="-fx-background-color: #374151; -fx-background-radius: 8; -fx-padding: 10;">
+                    <Label fx:id="userLabel" style="-fx-text-fill: #ffffff; -fx-font-weight: bold;" text="User" />
+                    <Label fx:id="roleLabel" style="-fx-text-fill: #9ca3af; -fx-font-size: 12px;" text="Role: USER" />
+                </VBox>
+                <Button onAction="#handleLogout" styleClass="logout-button" text="🚪 Log Out" />
+            </VBox>
+        </VBox>
+    </left>
+
+    <!-- Center Content View -->
+    <center>
+        <VBox styleClass="content-area" spacing="20.0">
+            <VBox spacing="4.0">
+                <Label styleClass="page-title" text="System Overview" />
+                <Label styleClass="page-subtitle" text="Real-time document registration and verification statistics" />
+            </VBox>
+
+            <!-- 4 Metric Cards -->
+            <HBox spacing="15.0">
+                <VBox HBox.hgrow="ALWAYS" styleClass="metric-card">
+                    <Label styleClass="metric-title" text="TOTAL DOCUMENTS" />
+                    <Label fx:id="totalDocsLabel" styleClass="metric-value" text="0" />
+                </VBox>
+
+                <VBox HBox.hgrow="ALWAYS" styleClass="metric-card">
+                    <Label styleClass="metric-title" text="TOTAL VERIFICATIONS" />
+                    <Label fx:id="totalVerificationsLabel" styleClass="metric-value" text="0" />
+                </VBox>
+
+                <VBox HBox.hgrow="ALWAYS" styleClass="metric-card">
+                    <Label styleClass="metric-title" text="VERIFIED MATCHES" />
+                    <Label fx:id="verifiedCountLabel" styleClass="metric-value" style="-fx-text-fill: #34d399;" text="0" />
+                </VBox>
+
+                <VBox HBox.hgrow="ALWAYS" styleClass="metric-card">
+                    <Label styleClass="metric-title" text="UNREGISTERED ATTEMPTS" />
+                    <Label fx:id="unregisteredCountLabel" styleClass="metric-value" style="-fx-text-fill: #f87171;" text="0" />
+                </VBox>
+            </HBox>
+
+            <!-- Table of Recent Activity -->
+            <VBox spacing="10.0" VBox.vgrow="ALWAYS">
+                <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #e5e7eb;" text="Recent Verification Activity" />
+                <TableView fx:id="activityTable" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="colFile" prefWidth="250.0" text="Submitted File" />
+                        <TableColumn fx:id="colResult" prefWidth="160.0" text="Result" />
+                        <TableColumn fx:id="colVerifier" prefWidth="180.0" text="Verifier" />
+                        <TableColumn fx:id="colDate" prefWidth="200.0" text="Timestamp" />
+                    </columns>
+                </TableView>
+            </VBox>
+        </VBox>
+    </center>
+</BorderPane>
