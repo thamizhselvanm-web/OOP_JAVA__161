@@ -45,25 +45,6 @@ public class DBConnection {
             return pass;
         }
 
-        // Test candidate passwords if no explicit password flag was provided
-        String[] candidatePasswords = new String[]{
-            "Thamizh1.",
-            "1234",
-            "",
-            "root",
-            "admin",
-            "password",
-            "123456"
-        };
-
-        for (String candidate : candidatePasswords) {
-            String baseUrl = "jdbc:mysql://" + DEFAULT_HOST + ":" + DEFAULT_PORT + "/?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
-            try (Connection conn = DriverManager.getConnection(baseUrl, getDbUser(), candidate)) {
-                return candidate;
-            } catch (SQLException ignored) {
-            }
-        }
-
         return DEFAULT_PASS;
     }
 
@@ -89,10 +70,10 @@ public class DBConnection {
      * Checks if the target database exists; if not, attempts to connect to MySQL server root and create it.
      */
     private static synchronized void ensureDatabaseExists() {
-        String baseUrl = "jdbc:mysql://" + DEFAULT_HOST + ":" + DEFAULT_PORT + "/?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
+        String baseUrl = "jdbc:mysql://" + DEFAULT_HOST + ":" + DEFAULT_PORT
+                + "/?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
         try (Connection rootConn = DriverManager.getConnection(baseUrl, getDbUser(), getDbPassword());
              Statement stmt = rootConn.createStatement()) {
-            
             stmt.executeUpdate("CREATE DATABASE IF NOT EXISTS " + DEFAULT_DB_NAME);
         } catch (SQLException e) {
             // Ignore if user lacks admin grants or database already exists
