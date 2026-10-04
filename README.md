@@ -36,11 +36,55 @@ OOP_JAVA__161/
 │   ├── database_setup.sql
 │   ├── StudentManagementApp.java
 │   └── lib/
-└── EX_12_MINI_PROJECT/
-    ├── database_setup.sql
-    ├── pom.xml
-    ├── resources/
-    └── src/
+└── Ex_12_MINI_PROJECT/
+    ├── CineBook_Implementation_Plan.md
+    └── CineBook/
+        ├── pom.xml
+        ├── database_setup.sql
+        ├── cinebook.db
+        ├── README.md
+        ├── resources/
+        │   └── styles/
+        │       └── application.css
+        └── src/
+            ├── application/
+            │   ├── AppRouter.java
+            │   └── Main.java
+            ├── controller/
+            │   ├── AdminController.java
+            │   ├── BookingController.java
+            │   ├── LoginController.java
+            │   └── MovieController.java
+            ├── dao/
+            │   ├── BookingDAO.java
+            │   ├── DatabaseConnection.java
+            │   ├── MovieDAO.java
+            │   ├── ShowDAO.java
+            │   ├── TheatreDAO.java
+            │   └── UserDAO.java
+            ├── dsa/
+            │   ├── BookingHashMap.java
+            │   ├── BookingQueue.java
+            │   ├── BookingSearch.java
+            │   ├── CancellationStack.java
+            │   └── UndoStack.java
+            ├── model/
+            │   ├── Admin.java
+            │   ├── Bookable.java
+            │   ├── Booking.java
+            │   ├── CashPayment.java
+            │   ├── Customer.java
+            │   ├── Movie.java
+            │   ├── OnlinePayment.java
+            │   ├── Payable.java
+            │   ├── Payment.java
+            │   ├── Seat.java
+            │   ├── Show.java
+            │   ├── Theatre.java
+            │   └── User.java
+            └── service/
+                ├── BookingService.java
+                └── PaymentService.java
 ```
 
 ---
@@ -60,7 +104,7 @@ OOP_JAVA__161/
 | [**Ex 9**](#ex9) | [Interactive String Operations](#ex9) | Dynamic Collections (`ArrayList`), Filtering, Buffer Flushing | `StringMenu.java` |
 | [**Ex 10**](#ex10) | [Directory File Listing Utility](#ex10) | Java File API (`java.io.File`), `isDirectory()`, `isFile()` | `File_Handling_ListFiles.java` |
 | [**Ex 11**](#ex11) | [Student Management CRUD Application](#ex11) | JavaFX GUI, JDBC Database Connectivity, MySQL CRUD | `StudentManagementApp.java`, `database_setup.sql` |
-| [**Ex 12**](#ex12) | [T2Verify Digital Document Verification System](#ex12) | JavaFX Modular MVC, SHA-256 Hashing, JDBC DAO Architecture | `Main.java`, `database_setup.sql` |
+| [**Ex 12**](#ex12) | [CineBook — Movie Ticket Booking System](#ex12) | JavaFX Desktop MVC, OOP Abstractions, DSA (Queue, UndoStack, BinarySearch, HashMap), SQLite JDBC | `Main.java`, `AppRouter.java`, `cinebook.db` |
 
 ---
 
@@ -248,54 +292,100 @@ OOP_JAVA__161/
 ---
 
 <a id="ex12"></a>
-### Experiment 12 / Mini Project: T2Verify — Secure Digital Document Verification System
-- **Directory**: `EX_12_MINI_PROJECT/`
-- **Main Class**: `com.t2verify.Main`
-- **Architecture**: Model-View-Controller (MVC) with Data Access Object (DAO) Layer.
-- **Key Features**:
-  - **Authentication**: User Registration & Login with Password Hashing.
-  - **Document Registration**: Upload documents, auto-calculate SHA-256 hash, and store record metadata.
-  - **Verification Engine**: Upload candidate file to compute cryptographic hash & cross-match with database records.
-  - **Audit History**: Log and track verification events with match outcome timestamps.
-- **Components**:
-  - `src/com/T2Verify/`: Controllers, DAOs, Models, Services, Utilities.
-  - `resources/fxml/ & resources/css/`: JavaFX FXML layout views and modern CSS styling.
-  - `database_setup.sql`: MySQL database schema (`users`, `documents`, `verifications`).
-  - `pom.xml`: Maven build configuration.
-- **Execution Procedure**:
-  1. **Database Setup**: Execute `database_setup.sql` in MySQL Server.
-  2. **Compile & Run (via Maven)**:
-     ```bash
-     cd EX_12_MINI_PROJECT
-     mvn clean javafx:run
-     ```
+### Experiment 12 / Mini Project: CineBook — Movie Ticket Booking System
+- **Directory**: `Ex_12_MINI_PROJECT/CineBook/`
+- **Main Class**: `application.Main`
+- **Architecture**: Multi-layered Model-View-Controller (MVC) + Data Access Object (DAO) + Business Service Layer + Data Structures and Algorithms (DSA) Engine.
+- **Key Concepts Demonstrated**:
+  - **Object-Oriented Programming (OOP)**:
+    - *Encapsulation*: Domain entities (`User`, `Movie`, `Show`, `Seat`, `Booking`, `Payment`) with strict private fields, validation, and getters/setters.
+    - *Inheritance*: Base abstract class `User` extended by `Customer` and `Admin`; abstract class `Payment` extended by `OnlinePayment` and `CashPayment`.
+    - *Polymorphism & Interfaces*: Contract enforcement via `Bookable` and `Payable` interfaces with dynamic method dispatch during runtime transaction handling.
+    - *Abstraction*: Clear separation between database connectivity, data access objects, business rules, controllers, and JavaFX presentation.
+  - **Data Structures & Algorithms (DSA)**:
+    - *Binary Search (`BookingSearch.java`)*: $O(\log N)$ logarithmic search over alphabetically sorted movie collections for lightning-fast search bar lookups.
+    - *Undo Stack (`UndoStack.java`)*: LIFO Stack (`push`/`pop`) enabling dynamic seat selection rollback directly from the seat grid.
+    - *Booking Queue (`BookingQueue.java`)*: FIFO Queue (`offer`/`poll`) data structure ensuring sequential processing of ticket reservation requests.
+    - *Cancellation Stack (`CancellationStack.java`)*: LIFO Stack recording canceled bookings for audit and state rollback.
+    - *Hash Map Lookup (`BookingHashMap.java`)*: Key-value hash indexing for $O(1)$ fast retrieval of active customer bookings.
+  - **GUI & Database**:
+    - *JavaFX 21*: Responsive, Figma-inspired Crimson Dark UI with interactive seat grid matrices, movie cards, and modal dialogs.
+    - *SQLite JDBC*: Embedded relational database (`cinebook.db`) with zero external configuration requirements, seeded automatically on startup.
 
-#### Mini Project Application Screenshots & Visual Documentation
+#### Updated Project Files & Component Explanations
 
-> [!NOTE]
-> Place screenshot image files inside `EX_12_MINI_PROJECT/docs/screenshots/` (or update image path references below).
+| Category | File | Short Explanation |
+| :--- | :--- | :--- |
+| **Application Layer** | [`AppRouter.java`](file:///d:/OOP_LAB/OOP_JAVA__161/Ex_12_MINI_PROJECT/CineBook/src/application/AppRouter.java) | Central navigation manager controlling stage routing and smooth transitions across views (Login, Customer, Admin). |
+| | [`Main.java`](file:///d:/OOP_LAB/OOP_JAVA__161/Ex_12_MINI_PROJECT/CineBook/src/application/Main.java) | Primary JavaFX application entry point launching the desktop window, loading stylesheets, and displaying views. |
+| **Domain Models & OOP** | [`User.java`](file:///d:/OOP_LAB/OOP_JAVA__161/Ex_12_MINI_PROJECT/CineBook/src/model/User.java) | Abstract base entity encapsulating common user identity fields (`id`, `name`, `email`, `password`, `role`). |
+| | [`Customer.java`](file:///d:/OOP_LAB/OOP_JAVA__161/Ex_12_MINI_PROJECT/CineBook/src/model/Customer.java) | Domain entity extending `User` representing cinema patrons browsing movies and reserving seats. |
+| | [`Admin.java`](file:///d:/OOP_LAB/OOP_JAVA__161/Ex_12_MINI_PROJECT/CineBook/src/model/Admin.java) | Domain entity extending `User` granting administrative privileges for movie, showtime, and booking management. |
+| | [`Movie.java`](file:///d:/OOP_LAB/OOP_JAVA__161/Ex_12_MINI_PROJECT/CineBook/src/model/Movie.java) | Entity modeling movie records with title, genre, runtime duration, censorship rating, and poster color codes. |
+| | [`Show.java`](file:///d:/OOP_LAB/OOP_JAVA__161/Ex_12_MINI_PROJECT/CineBook/src/model/Show.java) | Entity linking movies to specific screening schedules, theatre locations, screen numbers, and ticket tariffs. |
+| | [`Seat.java`](file:///d:/OOP_LAB/OOP_JAVA__161/Ex_12_MINI_PROJECT/CineBook/src/model/Seat.java) | Models an individual seat node within the 5x8 auditorium matrix with row, column, seat code, and availability state. |
+| | [`Booking.java`](file:///d:/OOP_LAB/OOP_JAVA__161/Ex_12_MINI_PROJECT/CineBook/src/model/Booking.java) | Entity tracking confirmed ticket reservations, allocated seats, payment amounts, timestamps, and active/canceled status. |
+| | [`Theatre.java`](file:///d:/OOP_LAB/OOP_JAVA__161/Ex_12_MINI_PROJECT/CineBook/src/model/Theatre.java) | Models cinema premises, auditorium screen configurations, and seating layouts. |
+| | [`Bookable.java`](file:///d:/OOP_LAB/OOP_JAVA__161/Ex_12_MINI_PROJECT/CineBook/src/model/Bookable.java) | Core interface defining the contractual behaviors for reservable resources (`book()`, `cancel()`, `isAvailable()`). |
+| | [`Payable.java`](file:///d:/OOP_LAB/OOP_JAVA__161/Ex_12_MINI_PROJECT/CineBook/src/model/Payable.java) | Core interface specifying payment processing contracts (`processPayment()`, `getPaymentStatus()`). |
+| | [`Payment.java`](file:///d:/OOP_LAB/OOP_JAVA__161/Ex_12_MINI_PROJECT/CineBook/src/model/Payment.java) | Abstract base transaction class implementing `Payable` with shared transaction attributes. |
+| | [`OnlinePayment.java`](file:///d:/OOP_LAB/OOP_JAVA__161/Ex_12_MINI_PROJECT/CineBook/src/model/OnlinePayment.java) | Polymorphic payment subclass handling UPI, Credit Card, and Net Banking digital transactions. |
+| | [`CashPayment.java`](file:///d:/OOP_LAB/OOP_JAVA__161/Ex_12_MINI_PROJECT/CineBook/src/model/CashPayment.java) | Polymorphic payment subclass managing over-the-counter cash settlements and receipt verification. |
+| **DSA Implementations** | [`BookingSearch.java`](file:///d:/OOP_LAB/OOP_JAVA__161/Ex_12_MINI_PROJECT/CineBook/src/dsa/BookingSearch.java) | Implements Binary Search ($O(\log N)$) across sorted movie titles for real-time search bar filtering. |
+| | [`UndoStack.java`](file:///d:/OOP_LAB/OOP_JAVA__161/Ex_12_MINI_PROJECT/CineBook/src/dsa/UndoStack.java) | Custom LIFO Stack supporting interactive seat selection undo operations in the booking interface. |
+| | [`BookingQueue.java`](file:///d:/OOP_LAB/OOP_JAVA__161/Ex_12_MINI_PROJECT/CineBook/src/dsa/BookingQueue.java) | Custom FIFO Queue ensuring synchronized, order-preserved booking request handling. |
+| | [`CancellationStack.java`](file:///d:/OOP_LAB/OOP_JAVA__161/Ex_12_MINI_PROJECT/CineBook/src/dsa/CancellationStack.java) | Custom LIFO Stack logging recently canceled bookings for administrative audit and rollback tracking. |
+| | [`BookingHashMap.java`](file:///d:/OOP_LAB/OOP_JAVA__161/Ex_12_MINI_PROJECT/CineBook/src/dsa/BookingHashMap.java) | Custom hash table structure providing $O(1)$ fast lookups for active user bookings. |
+| **Data Access Objects** | [`DatabaseConnection.java`](file:///d:/OOP_LAB/OOP_JAVA__161/Ex_12_MINI_PROJECT/CineBook/src/dao/DatabaseConnection.java) | Singleton SQLite JDBC connection provider featuring automated table schema execution and default dataset seeding. |
+| | [`UserDAO.java`](file:///d:/OOP_LAB/OOP_JAVA__161/Ex_12_MINI_PROJECT/CineBook/src/dao/UserDAO.java) | Executes user authentication queries, credential verification, and customer registration inserts. |
+| | [`MovieDAO.java`](file:///d:/OOP_LAB/OOP_JAVA__161/Ex_12_MINI_PROJECT/CineBook/src/dao/MovieDAO.java) | Data access layer for movie records (insertion, title lookup, update, deletion, total count). |
+| | [`ShowDAO.java`](file:///d:/OOP_LAB/OOP_JAVA__161/Ex_12_MINI_PROJECT/CineBook/src/dao/ShowDAO.java) | Manages showtime scheduling persistence, screen assignments, and screening queries by movie ID. |
+| | [`TheatreDAO.java`](file:///d:/OOP_LAB/OOP_JAVA__161/Ex_12_MINI_PROJECT/CineBook/src/dao/TheatreDAO.java) | Queries auditorium specifications, screen numbers, and seating capacities. |
+| | [`BookingDAO.java`](file:///d:/OOP_LAB/OOP_JAVA__161/Ex_12_MINI_PROJECT/CineBook/src/dao/BookingDAO.java) | Manages booking persistence, seat reservation tracking, ticket cancellation updates, and revenue summation. |
+| **Service Layer** | [`BookingService.java`](file:///d:/OOP_LAB/OOP_JAVA__161/Ex_12_MINI_PROJECT/CineBook/src/service/BookingService.java) | Validates booking prerequisites, prevents double booking, and handles transaction completion. |
+| | [`PaymentService.java`](file:///d:/OOP_LAB/OOP_JAVA__161/Ex_12_MINI_PROJECT/CineBook/src/service/PaymentService.java) | Payment gateway coordinator dispatching to cash or digital payment handlers. |
+| **Controllers** | [`LoginController.java`](file:///d:/OOP_LAB/OOP_JAVA__161/Ex_12_MINI_PROJECT/CineBook/src/controller/LoginController.java) | Validates user credentials, handles registration form submissions, and redirects based on user role. |
+| | [`MovieController.java`](file:///d:/OOP_LAB/OOP_JAVA__161/Ex_12_MINI_PROJECT/CineBook/src/controller/MovieController.java) | Coordinates movie browsing, card generation, and real-time binary search querying. |
+| | [`BookingController.java`](file:///d:/OOP_LAB/OOP_JAVA__161/Ex_12_MINI_PROJECT/CineBook/src/controller/BookingController.java) | Handles seat grid matrix clicks, undo actions, payment selection, ticket receipt modal, and cancellation. |
+| | [`AdminController.java`](file:///d:/OOP_LAB/OOP_JAVA__161/Ex_12_MINI_PROJECT/CineBook/src/controller/AdminController.java) | Powers the admin control centre: analytics metric cards, movie CRUD, showtime manager, and audit log. |
+| **Configuration & Assets** | [`pom.xml`](file:///d:/OOP_LAB/OOP_JAVA__161/Ex_12_MINI_PROJECT/CineBook/pom.xml) | Maven build descriptor specifying Java 21, JavaFX 21 controls, and SQLite JDBC driver dependencies. |
+| | [`database_setup.sql`](file:///d:/OOP_LAB/OOP_JAVA__161/Ex_12_MINI_PROJECT/CineBook/database_setup.sql) | DDL SQL schema defining tables (`users`, `movies`, `shows`, `bookings`, `payments`, `theatres`). |
+| | [`cinebook.db`](file:///d:/OOP_LAB/OOP_JAVA__161/Ex_12_MINI_PROJECT/CineBook/cinebook.db) | Embedded SQLite database file pre-populated with movies, showtimes, seats, and test accounts. |
+| | [`application.css`](file:///d:/OOP_LAB/OOP_JAVA__161/Ex_12_MINI_PROJECT/CineBook/resources/styles/application.css) | Custom Crimson Dark JavaFX CSS styling with glassmorphism, accent cards, and responsive buttons. |
+| | [`CineBook_Implementation_Plan.md`](file:///d:/OOP_LAB/OOP_JAVA__161/Ex_12_MINI_PROJECT/CineBook_Implementation_Plan.md) | Exhaustive implementation blueprint detailing system architecture, data flow, and specifications. |
 
-| View / Feature | Application Screenshot Placeholder | Description |
-| :--- | :---: | :--- |
-| **User Login & Authentication** | ![Login Screen](EX_12_MINI_PROJECT/docs/screenshots/login.png) | Authentication screen supporting user sign-in & session creation. |
-| **User Registration** | ![Register Screen](EX_12_MINI_PROJECT/docs/screenshots/register.png) | New user sign-up form with input validation and password hashing. |
-| **Main Dashboard** | ![Dashboard Screen](EX_12_MINI_PROJECT/docs/screenshots/dashboard.png) | Central navigation hub displaying quick stats and menu actions. |
-| **Document Upload & Register** | ![Upload Screen](EX_12_MINI_PROJECT/docs/screenshots/upload.png) | File selection interface generating SHA-256 fingerprint upon upload. |
-| **Document Verification Engine** | ![Verify Screen](EX_12_MINI_PROJECT/docs/screenshots/verify.png) | Live cryptographic hash comparison against registered documents. |
-| **Verification Audit History** | ![History Screen](EX_12_MINI_PROJECT/docs/screenshots/history.png) | Comprehensive tabular view of past verification attempts & results. |
+#### Compilation & Execution Procedure
+
+1. **Navigate to Project Directory**:
+   ```powershell
+   cd Ex_12_MINI_PROJECT\CineBook
+   ```
+
+2. **Launch Application via Maven**:
+   ```powershell
+   mvn clean javafx:run
+   ```
+   *(SQLite database `cinebook.db` is initialized and pre-seeded automatically on first startup)*
+
+3. **Pre-configured Demo Credentials**:
+   | Role | Email | Password | Access Scope |
+   | :--- | :--- | :--- | :--- |
+   | **Customer** | `user@cinebook.com` | `user123` | Movie Browsing, Binary Search, Interactive Seat Booking, Undo Stack, E-Ticket, My Bookings, Cancellation |
+   | **Admin** | `admin@cinebook.com` | `admin123` | Real-time Analytics Cards (Movies, Shows, Bookings, Revenue), Movie CRUD, Showtime Management, Audit Logs |
 
 ---
 
 ## System Requirements
 
-- **JDK Version**: Java Development Kit (JDK 17 or JDK 21 recommended).
-- **Environment**: PowerShell, Bash, or Command Prompt.
-- **Database (Ex 11 & 12)**: MySQL Server 8.0+ & MySQL Connector/J JDBC Driver.
-- **GUI Framework (Ex 11 & 12)**: OpenJFX / JavaFX SDK 17+.
+- **JDK Version**: Java Development Kit (JDK 21 recommended; JDK 17+ compatible).
+- **Build Tool**: Apache Maven 3.8+.
+- **Environment**: Windows PowerShell, Command Prompt, or Linux/macOS Bash.
+- **Database**: Embedded SQLite (self-contained, zero configuration required; pre-seeded in `cinebook.db`) & MySQL Server 8.0+ (for Ex 11).
+- **GUI Framework**: OpenJFX / JavaFX SDK 21 (managed seamlessly via Maven).
 
 ---
 
 ## Verification & Build Quality
 
-All 12 experiments (including the T2Verify JavaFX Mini Project) have been thoroughly verified, compiled, and tested for execution correctness across clean, isolated Java virtual machine environments.
+All 12 experiments—spanning foundational OOP constructs, multithreading, inter-thread synchronization monitors, dynamic collections, and the full-featured **CineBook JavaFX + SQLite Mini Project**—have been thoroughly verified, compiled, and tested for execution correctness across clean, isolated Java runtime environments.
 
